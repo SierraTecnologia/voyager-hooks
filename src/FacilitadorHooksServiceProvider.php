@@ -1,13 +1,13 @@
 <?php
 
-namespace Larapack\FacilitadorHooks;
+namespace Hooks;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
-use Larapack\Hooks\Events\Setup;
-use Larapack\Hooks\HooksServiceProvider;
-use TCG\Facilitador\Facades\Facilitador;
+use Hooks\Events\Setup;
+use Hooks\HooksServiceProvider;
+use Facilitador\Facades\Facilitador;
 
 class FacilitadorHooksServiceProvider extends ServiceProvider
 {

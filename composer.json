@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "sierratecnologia/hooks": "~1.0.2"
+        "sierratecnologia/hooks": "~1.0.11"
     },
     "require-dev": {
         "orchestra/testbench": ">=3.0"
@@ -30,11 +30,22 @@
             "FacilitadorHooks\\Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../**",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "extra": {
         "laravel": {
             "providers": [
                 "FacilitadorHooks\\FacilitadorHooksServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

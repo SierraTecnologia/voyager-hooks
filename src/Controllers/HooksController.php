@@ -1,12 +1,12 @@
 <?php
 
-namespace Larapack\FacilitadorHooks\Controllers;
+namespace Hooks\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Larapack\Hooks\Hooks;
+use Hooks\Hooks;
 
 class HooksController extends Controller
 {

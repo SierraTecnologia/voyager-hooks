@@ -26,7 +26,7 @@ Then add the service provider to the configuration (optional on Laravel 5.5+):
 
 ```php
 'providers' => [
-    Larapack\FacilitadorHooks\FacilitadorHooksServiceProvider::class,
+    Hooks\FacilitadorHooksServiceProvider::class,
 ],
 ```
 
