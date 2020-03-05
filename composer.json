@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "sierratecnologia/hooks": "~1.0.11"
+        "sierratecnologia/hooks": "dev-master"
     },
     "require-dev": {
         "orchestra/testbench": ">=3.0"
