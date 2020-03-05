@@ -1,12 +1,12 @@
 {
-    "name": "larapack/voyager-hooks",
-    "description": "Hooks integrated in Voyager",
-    "keywords": ["laravel", "hooks", "voyager"],
+    "name": "sierratecnologia/facilitador-hooks",
+    "description": "Hooks integrated in Facilitador",
+    "keywords": ["laravel", "hooks", "facilitador"],
     "license": "MIT",
-    "homepage": "https://larapack.io/",
+    "homepage": "https://sierratecnologia.io/",
     "support": {
-        "issues": "https://github.com/larapack/voyager-hooks/issues",
-        "source": "https://github.com/larapack/voyager-hooks"
+        "issues": "https://github.com/sierratecnologia/facilitador-hooks/issues",
+        "source": "https://github.com/sierratecnologia/facilitador-hooks"
     },
     "authors": [
         {
@@ -15,25 +15,25 @@
         }
     ],
     "require": {
-        "larapack/hooks": "~1.0.2"
+        "sierratecnologia/hooks": "~1.0.2"
     },
     "require-dev": {
         "orchestra/testbench": ">=3.0"
     },
     "autoload": {
         "psr-4": {
-            "Larapack\\VoyagerHooks\\": "src/"
+            "FacilitadorHooks\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Larapack\\VoyagerHooks\\Tests\\": "tests/"
+            "FacilitadorHooks\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Larapack\\VoyagerHooks\\VoyagerHooksServiceProvider"
+                "FacilitadorHooks\\FacilitadorHooksServiceProvider"
             ]
         }
     }

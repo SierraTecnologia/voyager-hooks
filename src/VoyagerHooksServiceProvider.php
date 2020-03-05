@@ -1,24 +1,24 @@
 <?php
 
-namespace Larapack\VoyagerHooks;
+namespace Larapack\FacilitadorHooks;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use Larapack\Hooks\Events\Setup;
 use Larapack\Hooks\HooksServiceProvider;
-use TCG\Voyager\Facades\Voyager;
+use TCG\Facilitador\Facades\Facilitador;
 
-class VoyagerHooksServiceProvider extends ServiceProvider
+class FacilitadorHooksServiceProvider extends ServiceProvider
 {
     /**
      * Register the application services.
      */
     public function register()
     {
-        $configPath = dirname(__DIR__).'/publishable/config/voyager-hooks.php';
+        $configPath = dirname(__DIR__).'/publishable/config/facilitador-hooks.php';
 
-        $this->mergeConfigFrom($configPath, 'voyager-hooks');
+        $this->mergeConfigFrom($configPath, 'facilitador-hooks');
 
         // Register the HooksServiceProvider
         $this->app->register(HooksServiceProvider::class);
@@ -29,13 +29,13 @@ class VoyagerHooksServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes(
-                [$configPath => config_path('voyager-hooks.php')],
-                'voyager-hooks-config'
+                [$configPath => config_path('facilitador-hooks.php')],
+                'facilitador-hooks-config'
             );
         }
 
         // Load views
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager-hooks');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'facilitador-hooks');
     }
 
     /**
@@ -49,26 +49,26 @@ class VoyagerHooksServiceProvider extends ServiceProvider
             return;
         }
 
-        if (config('voyager-hooks.add-route', true)) {
-            $events->listen('voyager.admin.routing', [$this, 'addHookRoute']);
+        if (config('facilitador-hooks.add-route', true)) {
+            $events->listen('facilitador.admin.routing', [$this, 'addHookRoute']);
         }
 
-        if (config('voyager-hooks.add-hook-menu-item', true)) {
+        if (config('facilitador-hooks.add-hook-menu-item', true)) {
             $events->listen(Setup::class, [$this, 'addHookMenuItem']);
         }
 
-        if (config('voyager-hooks.add-hook-permissions', true)) {
+        if (config('facilitador-hooks.add-hook-permissions', true)) {
             $events->listen(Setup::class, [$this, 'addHookPermissions']);
         }
 
-        if (config('voyager-hooks.publish-vendor-files', true)) {
+        if (config('facilitador-hooks.publish-vendor-files', true)) {
             $events->listen(Setup::class, [$this, 'publishVendorFiles']);
         }
     }
 
     public function addHookRoute($router)
     {
-        $namespacePrefix = '\\Larapack\\VoyagerHooks\\Controllers\\';
+        $namespacePrefix = '\\FacilitadorHooks\\Controllers\\';
 
         $router->get('hooks', ['uses' => $namespacePrefix.'HooksController@index', 'as' => 'hooks']);
         $router->get('hooks/{name}/enable', ['uses' => $namespacePrefix.'HooksController@enable', 'as' => 'hooks.enable']);
@@ -80,7 +80,7 @@ class VoyagerHooksServiceProvider extends ServiceProvider
 
     public function addHookMenuItem()
     {
-        $menu = Voyager::model('Menu')::where('name', 'admin')->first();
+        $menu = Facilitador::model('Menu')::where('name', 'admin')->first();
 
         if (is_null($menu)) {
             return;
@@ -88,7 +88,7 @@ class VoyagerHooksServiceProvider extends ServiceProvider
 
         $parentId = null;
 
-        $toolsMenuItem = Voyager::model('MenuItem')::where('menu_id', $menu->id)
+        $toolsMenuItem = Facilitador::model('MenuItem')::where('menu_id', $menu->id)
             ->where('title', 'Tools')
             ->first();
 
@@ -96,17 +96,17 @@ class VoyagerHooksServiceProvider extends ServiceProvider
             $parentId = $toolsMenuItem->id;
         }
 
-        $menuItem = Voyager::model('MenuItem')::firstOrNew([
+        $menuItem = Facilitador::model('MenuItem')::firstOrNew([
             'menu_id' => $menu->id,
             'title'   => 'Hooks',
             'url'     => '',
-            'route'   => 'voyager.hooks',
+            'route'   => 'facilitador.hooks',
         ]);
 
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => 'voyager-hook',
+                'icon_class' => 'facilitador-hook',
                 'color'      => null,
                 'parent_id'  => $parentId,
                 'order'      => 13,
@@ -116,7 +116,7 @@ class VoyagerHooksServiceProvider extends ServiceProvider
 
     public function addHookPermissions()
     {
-        Voyager::model('Permission')::firstOrCreate([
+        Facilitador::model('Permission')::firstOrCreate([
             'key'        => 'browse_hooks',
             'table_name' => null,
         ]);
@@ -129,10 +129,10 @@ class VoyagerHooksServiceProvider extends ServiceProvider
 
     public function enabled()
     {
-        if (config('voyager-hooks.enabled', true)) {
+        if (config('facilitador-hooks.enabled', true)) {
             return config('hooks.enabled', true);
         }
 
-        return config('voyager-hooks.enabled', true);
+        return config('facilitador-hooks.enabled', true);
     }
 }

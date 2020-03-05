@@ -1,6 +1,6 @@
 <?php
 
-namespace Larapack\VoyagerHooks\Controllers;
+namespace Larapack\FacilitadorHooks\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -34,7 +34,7 @@ class HooksController extends Controller
             $this->hooks->remakeJson();
         }
 
-        return view('voyager-hooks::browse', [
+        return view('facilitador-hooks::browse', [
             'hooks'              => $this->hooks->hooks(),
             'daysSinceLastCheck' => $lastUpdated->diffInDays(Carbon::now()),
         ]);

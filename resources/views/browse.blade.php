@@ -1,10 +1,10 @@
-@extends('voyager::master')
+@extends('facilitador::master')
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-hook"></i> Hooks
+        <i class="facilitador-hook"></i> Hooks
         <div class="btn btn-success install">
-            <i class="voyager-plus"></i> Add hook
+            <i class="facilitador-plus"></i> Add hook
         </div>
     </h1>
 @stop
@@ -49,22 +49,22 @@
                             @foreach($hooks as $hook)
                                 <tr>
                                     <td>
-                                        <i class="voyager-{{ $hook->type }}"></i> {{ $hook->name }}
+                                        <i class="facilitador-{{ $hook->type }}"></i> {{ $hook->name }}
                                     </td>
                                     <td>
-                                        <?= ($hook->enabled ? '<i class="voyager-check"></i> ENABLED' : '<i class="voyager-x"></i> DISABLED') ?>
+                                        <?= ($hook->enabled ? '<i class="facilitador-check"></i> ENABLED' : '<i class="facilitador-x"></i> DISABLED') ?>
                                     </td>
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $hook->name }}" id="delete-{{ $hook->name }}">
-                                            <i class="voyager-trash"></i> Uninstall
+                                            <i class="facilitador-trash"></i> Uninstall
                                         </div>
-                                        <a href="{{ route('voyager.hooks.'.($hook->enabled ? 'disable' : 'enable'), $hook->name) }}" class="btn-sm btn-primary pull-right edit">
-                                            <i class="voyager-edit"></i> {{ $hook->enabled ? 'Disable' : 'Enable' }}
+                                        <a href="{{ route('facilitador.hooks.'.($hook->enabled ? 'disable' : 'enable'), $hook->name) }}" class="btn-sm btn-primary pull-right edit">
+                                            <i class="facilitador-edit"></i> {{ $hook->enabled ? 'Disable' : 'Enable' }}
                                         </a>
                                         <?php /*
                                         @if ($hook->hasUpdateAvailable())
-                                            <a href="{{ route('voyager.hooks.update', $hook->name) }}" class="btn-sm btn-warning pull-right update">
-                                                <i class="voyager-edit"></i> Update
+                                            <a href="{{ route('facilitador.hooks.update', $hook->name) }}" class="btn-sm btn-warning pull-right update">
+                                                <i class="facilitador-edit"></i> Update
                                             </a>
                                         @endif
                                         */ ?>
@@ -85,11 +85,11 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Are you sure you want to uninstall
+                    <h4 class="modal-title"><i class="facilitador-trash"></i> Are you sure you want to uninstall
                         this hook?</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('voyager.hooks') }}" id="delete_form" method="POST">
+                    <form action="{{ route('facilitador.hooks') }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger pull-right delete-confirm"
@@ -103,11 +103,11 @@
 
     <div class="modal modal-success fade" tabindex="-1" id="install_modal" role="dialog">
         <div class="modal-dialog">
-            <form class="modal-content" action="{{ route('voyager.hooks') }}" id="install_form" method="POST">
+            <form class="modal-content" action="{{ route('facilitador.hooks') }}" id="install_form" method="POST">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-plus"></i>Install new hook.</h4>
+                    <h4 class="modal-title"><i class="facilitador-plus"></i>Install new hook.</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
