@@ -1,6 +1,6 @@
 <?php
 
-namespace Hooks;
+namespace FacilitadorHooks;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Artisan;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hooks\Controllers;
+namespace FacilitadorHooks\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
