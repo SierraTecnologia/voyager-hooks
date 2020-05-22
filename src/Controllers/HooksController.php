@@ -34,10 +34,12 @@ class HooksController extends Controller
             $this->hooks->remakeJson();
         }
 
-        return view('facilitador-hooks::browse', [
+        return view(
+            'facilitador-hooks::browse', [
             'hooks'              => $this->hooks->hooks(),
             'daysSinceLastCheck' => $lastUpdated->diffInDays(Carbon::now()),
-        ]);
+            ]
+        );
     }
 
     public function install()

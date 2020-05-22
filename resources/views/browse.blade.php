@@ -52,7 +52,7 @@
                                         <i class="facilitador-{{ $hook->type }}"></i> {{ $hook->name }}
                                     </td>
                                     <td>
-                                        <?= ($hook->enabled ? '<i class="facilitador-check"></i> ENABLED' : '<i class="facilitador-x"></i> DISABLED') ?>
+                                        <?php echo ($hook->enabled ? '<i class="facilitador-check"></i> ENABLED' : '<i class="facilitador-x"></i> DISABLED') ?>
                                     </td>
                                     <td class="no-sort no-click">
                                         <div class="btn-sm btn-danger pull-right delete" data-id="{{ $hook->name }}" id="delete-{{ $hook->name }}">

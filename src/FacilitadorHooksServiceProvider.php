@@ -49,19 +49,19 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
             return;
         }
 
-        if (config('facilitador-hooks.add-route', true)) {
+        if (\Illuminate\Support\Facades\Config::get('facilitador-hooks.add-route', true)) {
             $events->listen('facilitador.admin.routing', [$this, 'addHookRoute']);
         }
 
-        if (config('facilitador-hooks.add-hook-menu-item', true)) {
+        if (\Illuminate\Support\Facades\Config::get('facilitador-hooks.add-hook-menu-item', true)) {
             $events->listen(Setup::class, [$this, 'addHookMenuItem']);
         }
 
-        if (config('facilitador-hooks.add-hook-permissions', true)) {
+        if (\Illuminate\Support\Facades\Config::get('facilitador-hooks.add-hook-permissions', true)) {
             $events->listen(Setup::class, [$this, 'addHookPermissions']);
         }
 
-        if (config('facilitador-hooks.publish-vendor-files', true)) {
+        if (\Illuminate\Support\Facades\Config::get('facilitador-hooks.publish-vendor-files', true)) {
             $events->listen(Setup::class, [$this, 'publishVendorFiles']);
         }
     }
@@ -96,30 +96,36 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
             $parentId = $toolsMenuItem->id;
         }
 
-        $menuItem = Facilitador::model('MenuItem')::firstOrNew([
+        $menuItem = Facilitador::model('MenuItem')::firstOrNew(
+            [
             'menu_id' => $menu->id,
             'title'   => 'Hooks',
             'url'     => '',
             'route'   => 'facilitador.hooks',
-        ]);
+            ]
+        );
 
         if (!$menuItem->exists) {
-            $menuItem->fill([
+            $menuItem->fill(
+                [
                 'target'     => '_self',
                 'icon_class' => 'facilitador-hook',
                 'color'      => null,
                 'parent_id'  => $parentId,
                 'order'      => 13,
-            ])->save();
+                ]
+            )->save();
         }
     }
 
     public function addHookPermissions()
     {
-        Facilitador::model('Permission')::firstOrCreate([
+        Facilitador::model('Permission')::firstOrCreate(
+            [
             'key'        => 'browse_hooks',
             'table_name' => null,
-        ]);
+            ]
+        );
     }
 
     public function publishVendorFiles()
@@ -129,10 +135,10 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
 
     public function enabled()
     {
-        if (config('facilitador-hooks.enabled', true)) {
-            return config('hooks.enabled', true);
+        if (\Illuminate\Support\Facades\Config::get('facilitador-hooks.enabled', true)) {
+            return \Illuminate\Support\Facades\Config::get('hooks.enabled', true);
         }
 
-        return config('facilitador-hooks.enabled', true);
+        return \Illuminate\Support\Facades\Config::get('facilitador-hooks.enabled', true);
     }
 }
