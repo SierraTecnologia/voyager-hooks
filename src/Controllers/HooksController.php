@@ -93,7 +93,7 @@ class HooksController extends Controller
         return $this->redirect("Hook [{$name}] have been disabled!");
     }
 
-    protected function redirect($message)
+    protected function redirect(string $message)
     {
         $referer = $this->request->server('HTTP_REFERER');
         $location = head(explode('?', $referer));
