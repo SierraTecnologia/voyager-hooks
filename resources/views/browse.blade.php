@@ -55,15 +55,15 @@
                                         <?php echo ($hook->enabled ? '<i class="facilitador-check"></i> ENABLED' : '<i class="facilitador-x"></i> DISABLED') ?>
                                     </td>
                                     <td class="no-sort no-click">
-                                        <div class="btn-sm btn-danger pull-right delete" data-id="{{ $hook->name }}" id="delete-{{ $hook->name }}">
+                                        <div class="btn-sm btn-danger float-right delete" data-id="{{ $hook->name }}" id="delete-{{ $hook->name }}">
                                             <i class="facilitador-trash"></i> Uninstall
                                         </div>
-                                        <a href="{{ route('facilitador.hooks.'.($hook->enabled ? 'disable' : 'enable'), $hook->name) }}" class="btn-sm btn-primary pull-right edit">
+                                        <a href="{{ route('facilitador.hooks.'.($hook->enabled ? 'disable' : 'enable'), $hook->name) }}" class="btn-sm btn-primary float-right edit">
                                             <i class="facilitador-edit"></i> {{ $hook->enabled ? 'Disable' : 'Enable' }}
                                         </a>
                                         <?php /*
                                         @if ($hook->hasUpdateAvailable())
-                                            <a href="{{ route('facilitador.hooks.update', $hook->name) }}" class="btn-sm btn-warning pull-right update">
+                                            <a href="{{ route('facilitador.hooks.update', $hook->name) }}" class="btn-sm btn-warning float-right update">
                                                 <i class="facilitador-edit"></i> Update
                                             </a>
                                         @endif
@@ -92,10 +92,10 @@
                     <form action="{{ route('facilitador.hooks') }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm"
+                        <input type="submit" class="btn btn-danger float-right delete-confirm"
                                value="Yes, Delete This Hook">
                     </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancel</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -117,9 +117,9 @@
                 </div>
                 <div class="modal-footer">
                         {{ csrf_field() }}
-                        <input type="submit" class="btn btn-success pull-right install-confirm"
+                        <input type="submit" class="btn btn-success float-right install-confirm"
                                value="Install">
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancel</button>
                 </div>
             </form><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
