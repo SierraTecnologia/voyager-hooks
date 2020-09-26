@@ -12,8 +12,8 @@ class HooksController extends Controller
 {
     use AuthorizesRequests;
 
-    protected $hooks;
-    protected $request;
+    protected Hooks $hooks;
+    protected Request $request;
 
     public function __construct(Hooks $hooks, Request $request)
     {
@@ -21,6 +21,9 @@ class HooksController extends Controller
         $this->request = $request;
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         // Check permission
@@ -93,7 +96,7 @@ class HooksController extends Controller
         return $this->redirect("Hook [{$name}] have been disabled!");
     }
 
-    protected function redirect(string $message)
+    protected function redirect(string $message): void
     {
         $referer = $this->request->server('HTTP_REFERER');
         $location = head(explode('?', $referer));
