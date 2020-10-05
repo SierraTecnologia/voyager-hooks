@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "sierratecnologia/hooks": "dev-master"
+        "sierratecnologia/hooks": "^0.4.0"
     },
     "require-dev": {
         "orchestra/testbench": "^4.0|^5.0|^6.0"
@@ -30,7 +30,6 @@
             "FacilitadorHooks\\Tests\\": "tests/"
         }
     },
-    "repositories": [{"type": "path","url":"../**","options":{"symlink": true}}],
     "extra": {
         "laravel": {
             "providers": [
