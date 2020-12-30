@@ -95,7 +95,7 @@
                         <input type="submit" class="btn btn-danger float-right delete-confirm"
                                value="Yes, Delete This Hook">
                     </form>
-                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -119,7 +119,7 @@
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-success float-right install-confirm"
                                value="Install">
-                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">{{ __('pedreiro::generic.cancel') }}</button>
                 </div>
             </form><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
