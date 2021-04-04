@@ -58,12 +58,12 @@
                                         <div class="btn-sm btn-danger float-right delete" data-id="{{ $hook->name }}" id="delete-{{ $hook->name }}">
                                             <i class="facilitador-trash"></i> Uninstall
                                         </div>
-                                        <a href="{{ route('facilitador.hooks.'.($hook->enabled ? 'disable' : 'enable'), $hook->name) }}" class="btn-sm btn-primary float-right edit">
+                                        <a href="{{ route('rica.facilitador.hooks.'.($hook->enabled ? 'disable' : 'enable'), $hook->name) }}" class="btn-sm btn-primary float-right edit">
                                             <i class="facilitador-edit"></i> {{ $hook->enabled ? 'Disable' : 'Enable' }}
                                         </a>
                                         <?php /*
                                         @if ($hook->hasUpdateAvailable())
-                                            <a href="{{ route('facilitador.hooks.update', $hook->name) }}" class="btn-sm btn-warning float-right update">
+                                            <a href="{{ route('rica.facilitador.hooks.update', $hook->name) }}" class="btn-sm btn-warning float-right update">
                                                 <i class="facilitador-edit"></i> Update
                                             </a>
                                         @endif
@@ -89,7 +89,7 @@
                         this hook?</h4>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ route('facilitador.hooks') }}" id="delete_form" method="POST">
+                    <form action="{{ route('rica.facilitador.hooks') }}" id="delete_form" method="POST">
                         {{ method_field("DELETE") }}
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-danger float-right delete-confirm"
@@ -103,7 +103,7 @@
 
     <div class="modal modal-success fade" tabindex="-1" id="install_modal" role="dialog">
         <div class="modal-dialog">
-            <form class="modal-content" action="{{ route('facilitador.hooks') }}" id="install_form" method="POST">
+            <form class="modal-content" action="{{ route('rica.facilitador.hooks') }}" id="install_form" method="POST">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
