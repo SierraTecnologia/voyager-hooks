@@ -42,6 +42,8 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
      * Bootstrap the application services.
      *
      * @param \Illuminate\Events\Dispatcher $events
+     *
+     * @return void
      */
     public function boot(Dispatcher $events)
     {
@@ -66,7 +68,7 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
         }
     }
 
-    public function addHookRoute($router)
+    public function addHookRoute($router): void
     {
         $namespacePrefix = '\\FacilitadorHooks\\Controllers\\';
 
@@ -78,6 +80,9 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
         $router->delete('hooks/{name}', ['uses' => $namespacePrefix.'HooksController@uninstall', 'as' => 'hooks.uninstall']);
     }
 
+    /**
+     * @return void
+     */
     public function addHookMenuItem()
     {
         $menu = Facilitador::model('Menu')::where('name', 'admin')->first();
@@ -118,7 +123,7 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
         }
     }
 
-    public function addHookPermissions()
+    public function addHookPermissions(): void
     {
         Facilitador::model('Permission')::firstOrCreate(
             [
@@ -128,7 +133,7 @@ class FacilitadorHooksServiceProvider extends ServiceProvider
         );
     }
 
-    public function publishVendorFiles()
+    public function publishVendorFiles(): void
     {
         Artisan::call('vendor:publish', ['--provider' => static::class]);
     }

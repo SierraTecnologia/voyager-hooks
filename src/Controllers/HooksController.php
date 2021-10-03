@@ -21,6 +21,9 @@ class HooksController extends Controller
         $this->request = $request;
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         // Check permission
@@ -42,6 +45,9 @@ class HooksController extends Controller
         );
     }
 
+    /**
+     * @return empty
+     */
     public function install()
     {
         // Check permission
@@ -53,6 +59,9 @@ class HooksController extends Controller
         return $this->redirect("Hook [{$name}] have been installed!");
     }
 
+    /**
+     * @return empty
+     */
     public function uninstall($name)
     {
         // Check permission
@@ -63,6 +72,9 @@ class HooksController extends Controller
         return $this->redirect("Hook [{$name}] have been uninstalled!");
     }
 
+    /**
+     * @return empty
+     */
     public function update($name)
     {
         // Check permission
@@ -73,6 +85,9 @@ class HooksController extends Controller
         return $this->redirect("Hook [{$name}] have been updated!");
     }
 
+    /**
+     * @return empty
+     */
     public function enable($name)
     {
         // Check permission
@@ -83,6 +98,9 @@ class HooksController extends Controller
         return $this->redirect("Hook [{$name}] have been enabled!");
     }
 
+    /**
+     * @return empty
+     */
     public function disable($name)
     {
         // Check permission
@@ -93,6 +111,9 @@ class HooksController extends Controller
         return $this->redirect("Hook [{$name}] have been disabled!");
     }
 
+    /**
+     * @return never
+     */
     protected function redirect(string $message)
     {
         $referer = $this->request->server('HTTP_REFERER');
