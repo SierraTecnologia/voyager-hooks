@@ -35,8 +35,8 @@
         @endif
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-bordered">
-                    <div class="panel-body">
+                <div class="card card-bordered">
+                    <div class="box-body panel-body card-body">
                         <table id="dataTable" class="table table-hover">
                             <thead>
                             <tr>
